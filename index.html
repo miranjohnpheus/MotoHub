@@ -38,12 +38,18 @@
         </div>
     </section>
 
-    <!-- Motorcycle Listings -->
+    <!-- Motorcycle Catalog -->
     <section class="motorcycles section" id="motorcycles">
         <div class="section-heading">
             <p class="tagline">EXPLORE OUR COLLECTION</p>
             <h2>Available Motorcycles</h2>
-            <p>Find a motorcycle that matches your style and budget.</p>
+            <p>Browse motorcycles by type, compare prices, and find your next ride.</p>
+
+            <!-- Catalog Listing Count -->
+            <div class="catalog-summary">
+    <span id="catalogCount">4 motorcycles available</span>
+    <p>Find the right motorcycle for your next adventure.</p>
+</div>
         </div>
 
         <!-- Search -->
@@ -224,6 +230,7 @@
     <script>
         const motorcycleGrid = document.getElementById("motorcycleGrid");
         const listingTable = document.getElementById("listingTable");
+        const catalogCount = document.getElementById("catalogCount");
 
         let nextId = 5;
 
@@ -262,9 +269,21 @@
             return "₱" + Number(price).toLocaleString("en-PH");
         }
 
+        function updateCatalogCount() {
+            const total = listings.length;
+
+            catalogCount.textContent =
+                total + (total === 1
+                    ? " motorcycle available"
+                    : " motorcycles available");
+        }
+
         function renderListings() {
             motorcycleGrid.innerHTML = "";
             listingTable.innerHTML = "";
+
+            // Update the catalog count whenever listings change.
+            updateCatalogCount();
 
             listings.forEach(function(bike) {
                 const card = document.createElement("article");
@@ -300,27 +319,42 @@
                 const detailsButton = document.createElement("button");
                 detailsButton.className = "btn contact-btn";
                 detailsButton.textContent = "View Details";
+
                 detailsButton.addEventListener("click", function() {
                     contactSeller(bike.name);
                 });
 
-                content.append(badge, title, description, price, seller, detailsButton);
+                content.append(
+                    badge,
+                    title,
+                    description,
+                    price,
+                    seller,
+                    detailsButton
+                );
+
                 card.append(icon, content);
                 motorcycleGrid.appendChild(card);
 
                 const row = document.createElement("tr");
 
-                [bike.name, bike.type, formatPrice(bike.price), bike.seller]
-                    .forEach(function(value) {
-                        const cell = document.createElement("td");
-                        cell.textContent = value;
-                        row.appendChild(cell);
-                    });
+                [
+                    bike.name,
+                    bike.type,
+                    formatPrice(bike.price),
+                    bike.seller
+                ].forEach(function(value) {
+                    const cell = document.createElement("td");
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
 
                 const actionCell = document.createElement("td");
                 const deleteButton = document.createElement("button");
+
                 deleteButton.className = "delete-btn";
                 deleteButton.textContent = "Delete";
+
                 deleteButton.addEventListener("click", function() {
                     deleteListing(bike.id);
                 });
@@ -367,7 +401,7 @@
         function contactSeller(name) {
             alert(
                 "Motorcycle: " + name +
-                "\\nThis is a demo listing. Seller contact functionality is not connected yet."
+                "\nThis is a demo listing. Seller contact functionality is not connected yet."
             );
         }
 
@@ -417,7 +451,10 @@
             renderListings();
         }
 
-        document.getElementById("searchInput").addEventListener("input", searchMotorcycles);
+        document.getElementById("searchInput").addEventListener(
+            "input",
+            searchMotorcycles
+        );
 
         renderListings();
     </script>
