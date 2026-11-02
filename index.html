@@ -188,31 +188,33 @@
         </form>
     </section>
 
-    <!-- CMS / Manage Listings -->
-    <section class="manage-section section" id="manage">
-        <div class="section-heading">
-            <p class="tagline">CONTENT MANAGEMENT SYSTEM</p>
-            <h2>Manage Motorcycle Listings</h2>
-            <p>View and remove listings displayed on this demo website.</p>
-        </div>
+<!-- CMS / Manage Listings -->
+<section class="manage-section section" id="manage">
+    <div class="section-heading">
+        <p class="tagline">CONTENT MANAGEMENT SYSTEM</p>
+        <h2>Manage Motorcycle Listings</h2>
+        <p>View and remove listings displayed on this demo website.</p>
+        <p id="listingCount">Total Listings: 0</p>
+    </div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Motorcycle</th>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>Seller</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="listingTable">
-                    <!-- Listings are added using JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Motorcycle</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Seller</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="listingTable">
+                <!-- Listings are added using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</section>
+```
 
     <!-- Footer -->
     <footer>
@@ -262,9 +264,14 @@
             return "₱" + Number(price).toLocaleString("en-PH");
         }
 
-        function renderListings() {
-            motorcycleGrid.innerHTML = "";
-            listingTable.innerHTML = "";
+        ```javascript
+function renderListings() {
+    motorcycleGrid.innerHTML = "";
+    listingTable.innerHTML = "";
+
+    const listingCount = document.getElementById("listingCount");
+    listingCount.textContent = "Total Listings: " + listings.length;
+```
 
             listings.forEach(function(bike) {
                 const card = document.createElement("article");
