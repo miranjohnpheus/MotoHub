@@ -339,16 +339,18 @@
                 }
             });
 
-            if (searchTerm === "") {
-                searchMessage.textContent =
-                    "Showing all " + visibleCount + " motorcycle listing(s).";
-            } else if (visibleCount === 0) {
-                searchMessage.textContent =
-                    "No motorcycles found. Try another name or brand.";
-            } else {
-                searchMessage.textContent =
-                    "Found " + visibleCount + " motorcycle listing(s).";
-            }
+           if (searchTerm === "") {
+    searchMessage.textContent =
+        "Showing all " + visibleCount + " motorcycle listing(s).";
+} else if (visibleCount === 0) {
+    searchMessage.textContent =
+        'No results for "' + searchInput.value.trim() +
+        '". Try another motorcycle name or brand.';
+} else {
+    searchMessage.textContent =
+        'Found ' + visibleCount + ' motorcycle listing(s) for "' +
+        searchInput.value.trim() + '".';
+}
         }
 
         // Clear the search field and show all motorcycles.
