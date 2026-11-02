@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoHub | Motorcycle Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Moto<span>Hub</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#motorcycles">Motorcycles</a></li>
+                <li><a href="#sell">Sell Motorcycle</a></li>
+                <li><a href="#manage">Manage Listings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">YOUR NEXT RIDE STARTS HERE</p>
+
+            <h1>Find Your Perfect <span>Motorcycle</span></h1>
+
+            <p>
+                Buy, sell, and discover motorcycles in one convenient place.
+                Your next adventure starts with MotoHub.
+            </p>
+
+            <a href="#motorcycles" class="btn">Browse Motorcycles</a>
+        </div>
+    </section>
+
+    <!-- Motorcycle Listings -->
+    <section class="motorcycles section" id="motorcycles">
+        <div class="section-heading">
+            <p class="tagline">EXPLORE OUR COLLECTION</p>
+            <h2>Available Motorcycles</h2>
+            <p>Find a motorcycle that matches your style and budget.</p>
+        </div>
+
+        <!-- Search -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search motorcycle name or brand..."
+                aria-label="Search motorcycles"
+            >
+            <button class="btn" onclick="searchMotorcycles()">Search</button>
+            <button class="btn btn-light" onclick="clearSearch()">Clear</button>
+        </div>
+
+        <p id="searchMessage" class="message" aria-live="polite"></p>
+
+        <div class="motorcycle-grid" id="motorcycleGrid">
+
+            <article class="motorcycle-card" data-name="Honda Click 125i">
+                <div class="bike-placeholder">🏍️</div>
+                <div class="card-content">
+                    <span class="badge">Scooter</span>
+                    <h3>Honda Click 125i</h3>
+                    <p class="description">A practical scooter for everyday rides.</p>
+                    <p class="price">₱65,000</p>
+                    <p class="seller">Seller: Alex M.</p>
+                    <button class="btn contact-btn"
+                        onclick="contactSeller('Honda Click 125i')">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article class="motorcycle-card" data-name="Yamaha Mio i 125">
+                <div class="bike-placeholder">🏍️</div>
+                <div class="card-content">
+                    <span class="badge">Scooter</span>
+                    <h3>Yamaha Mio i 125</h3>
+                    <p class="description">A lightweight motorcycle for city travel.</p>
+                    <p class="price">₱58,000</p>
+                    <p class="seller">Seller: Mark R.</p>
+                    <button class="btn contact-btn"
+                        onclick="contactSeller('Yamaha Mio i 125')">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article class="motorcycle-card" data-name="Kawasaki Ninja 400">
+                <div class="bike-placeholder">🏍️</div>
+                <div class="card-content">
+                    <span class="badge">Sport Bike</span>
+                    <h3>Kawasaki Ninja 400</h3>
+                    <p class="description">A sporty motorcycle for enthusiasts.</p>
+                    <p class="price">₱235,000</p>
+                    <p class="seller">Seller: John D.</p>
+                    <button class="btn contact-btn"
+                        onclick="contactSeller('Kawasaki Ninja 400')">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article class="motorcycle-card" data-name="Honda TMX 125">
+                <div class="bike-placeholder">🏍️</div>
+                <div class="card-content">
+                    <span class="badge">Standard</span>
+                    <h3>Honda TMX 125</h3>
+                    <p class="description">A simple and versatile everyday motorcycle.</p>
+                    <p class="price">₱48,000</p>
+                    <p class="seller">Seller: Carlo P.</p>
+                    <button class="btn contact-btn"
+                        onclick="contactSeller('Honda TMX 125')">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="demo-notice">
+            Sample listings for demonstration purposes only.
+        </p>
+    </section>
+
+    <!-- Sell Motorcycle -->
+    <section class="sell-section section" id="sell">
+        <div class="section-heading">
+            <p class="tagline">JOIN OUR MARKETPLACE</p>
+            <h2>Sell Your Motorcycle</h2>
+            <p>Enter your motorcycle details to add a listing.</p>
+        </div>
+
+        <form id="sellForm" class="sell-form">
+            <div class="form-group">
+                <label for="bikeName">Motorcycle Name</label>
+                <input
+                    type="text"
+                    id="bikeName"
+                    placeholder="e.g. Honda Click 125i"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="bikeType">Motorcycle Type</label>
+                <select id="bikeType" required>
+                    <option value="">Select type</option>
+                    <option>Scooter</option>
+                    <option>Sport Bike</option>
+                    <option>Standard</option>
+                    <option>Underbone</option>
+                    <option>Adventure</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bikePrice">Price (₱)</label>
+                <input
+                    type="number"
+                    id="bikePrice"
+                    min="1"
+                    placeholder="Enter price"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="sellerName">Seller Name</label>
+                <input
+                    type="text"
+                    id="sellerName"
+                    placeholder="Enter seller name"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn">Add Motorcycle Listing</button>
+
+            <p id="formMessage" class="message" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <!-- CMS / Manage Listings -->
+    <section class="manage-section section" id="manage">
+        <div class="section-heading">
+            <p class="tagline">CONTENT MANAGEMENT SYSTEM</p>
+            <h2>Manage Motorcycle Listings</h2>
+            <p>View and remove listings displayed on this demo website.</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Motorcycle</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Seller</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="listingTable">
+                    <!-- Listings are added using JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#home" class="logo">Moto<span>Hub</span></a>
+        <p>Your trusted destination for buying and selling motorcycles.</p>
+        <p class="copyright">&copy; 2026 MotoHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const motorcycleGrid = document.getElementById("motorcycleGrid");
+        const listingTable = document.getElementById("listingTable");
+
+        let nextId = 5;
+
+        const listings = [
+            {
+                id: 1,
+                name: "Honda Click 125i",
+                type: "Scooter",
+                price: 65000,
+                seller: "Alex M."
+            },
+            {
+                id: 2,
+                name: "Yamaha Mio i 125",
+                type: "Scooter",
+                price: 58000,
+                seller: "Mark R."
+            },
+            {
+                id: 3,
+                name: "Kawasaki Ninja 400",
+                type: "Sport Bike",
+                price: 235000,
+                seller: "John D."
+            },
+            {
+                id: 4,
+                name: "Honda TMX 125",
+                type: "Standard",
+                price: 48000,
+                seller: "Carlo P."
+            }
+        ];
+
+        function formatPrice(price) {
+            return "₱" + Number(price).toLocaleString("en-PH");
+        }
+
+        function renderListings() {
+            motorcycleGrid.innerHTML = "";
+            listingTable.innerHTML = "";
+
+            listings.forEach(function(bike) {
+                const card = document.createElement("article");
+                card.className = "motorcycle-card";
+                card.dataset.name = bike.name;
+
+                const icon = document.createElement("div");
+                icon.className = "bike-placeholder";
+                icon.textContent = "🏍️";
+
+                const content = document.createElement("div");
+                content.className = "card-content";
+
+                const badge = document.createElement("span");
+                badge.className = "badge";
+                badge.textContent = bike.type;
+
+                const title = document.createElement("h3");
+                title.textContent = bike.name;
+
+                const description = document.createElement("p");
+                description.className = "description";
+                description.textContent = "Available for sale on MotoHub.";
+
+                const price = document.createElement("p");
+                price.className = "price";
+                price.textContent = formatPrice(bike.price);
+
+                const seller = document.createElement("p");
+                seller.className = "seller";
+                seller.textContent = "Seller: " + bike.seller;
+
+                const detailsButton = document.createElement("button");
+                detailsButton.className = "btn contact-btn";
+                detailsButton.textContent = "View Details";
+                detailsButton.addEventListener("click", function() {
+                    contactSeller(bike.name);
+                });
+
+                content.append(badge, title, description, price, seller, detailsButton);
+                card.append(icon, content);
+                motorcycleGrid.appendChild(card);
+
+                const row = document.createElement("tr");
+
+                [bike.name, bike.type, formatPrice(bike.price), bike.seller]
+                    .forEach(function(value) {
+                        const cell = document.createElement("td");
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    });
+
+                const actionCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "delete-btn";
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", function() {
+                    deleteListing(bike.id);
+                });
+
+                actionCell.appendChild(deleteButton);
+                row.appendChild(actionCell);
+                listingTable.appendChild(row);
+            });
+
+            searchMotorcycles();
+        }
+
+        function searchMotorcycles() {
+            const searchTerm = document
+                .getElementById("searchInput")
+                .value.trim()
+                .toLowerCase();
+
+            const cards = motorcycleGrid.querySelectorAll(".motorcycle-card");
+            let visibleCount = 0;
+
+            cards.forEach(function(card) {
+                const name = card.dataset.name.toLowerCase();
+                const matches = name.includes(searchTerm);
+
+                card.style.display = matches ? "" : "none";
+
+                if (matches) {
+                    visibleCount++;
+                }
+            });
+
+            document.getElementById("searchMessage").textContent =
+                visibleCount === 0
+                    ? "No motorcycles found. Try another search."
+                    : "Showing " + visibleCount + " motorcycle listing(s).";
+        }
+
+        function clearSearch() {
+            document.getElementById("searchInput").value = "";
+            searchMotorcycles();
+        }
+
+        function contactSeller(name) {
+            alert(
+                "Motorcycle: " + name +
+                "\\nThis is a demo listing. Seller contact functionality is not connected yet."
+            );
+        }
+
+        document.getElementById("sellForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("bikeName").value.trim();
+            const type = document.getElementById("bikeType").value;
+            const price = Number(document.getElementById("bikePrice").value);
+            const seller = document.getElementById("sellerName").value.trim();
+
+            if (!name || !type || !seller || !Number.isFinite(price) || price <= 0) {
+                document.getElementById("formMessage").textContent =
+                    "Please enter valid information in all fields.";
+                return;
+            }
+
+            listings.push({
+                id: nextId++,
+                name: name,
+                type: type,
+                price: price,
+                seller: seller
+            });
+
+            renderListings();
+            this.reset();
+
+            document.getElementById("formMessage").textContent =
+                "Motorcycle listing added successfully!";
+        });
+
+        function deleteListing(id) {
+            const index = listings.findIndex(function(bike) {
+                return bike.id === id;
+            });
+
+            if (index === -1) return;
+
+            const confirmed = confirm(
+                "Are you sure you want to delete this motorcycle listing?"
+            );
+
+            if (!confirmed) return;
+
+            listings.splice(index, 1);
+            renderListings();
+        }
+
+        document.getElementById("searchInput").addEventListener("input", searchMotorcycles);
+
+        renderListings();
+    </script>
+
+</body>
+</html>
