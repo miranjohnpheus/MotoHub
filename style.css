@@ -1,0 +1,457 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Navigation */
+header {
+    background-color: #0f172a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #f97316;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #e2e8f0;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #fb923c;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 460px;
+    padding: 90px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a, #1e3a5f);
+    color: white;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.tagline {
+    color: #f97316;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #fb923c;
+}
+
+.hero-content > p:not(.tagline) {
+    color: #cbd5e1;
+    max-width: 600px;
+    margin: 0 auto 28px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 20px;
+    background-color: #f97316;
+    color: #ffffff;
+    font-weight: 700;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #ea580c;
+    transform: translateY(-1px);
+}
+
+.btn-light {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.btn-light:hover {
+    background-color: #cbd5e1;
+}
+
+/* General Sections */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 75px 24px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.section-heading h2 {
+    font-size: clamp(26px, 4vw, 36px);
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.section-heading > p:last-child {
+    color: #64748b;
+}
+
+/* Search */
+.search-container {
+    max-width: 720px;
+    margin: 0 auto 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-container input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.search-container input:focus,
+.sell-form input:focus,
+.sell-form select:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgb(249 115 22 / 12%);
+}
+
+.message {
+    text-align: center;
+    margin: 12px 0 20px;
+    color: #475569;
+    font-size: 14px;
+}
+
+/* Motorcycle Cards */
+.motorcycle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.motorcycle-card {
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgb(15 23 42 / 5%);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.motorcycle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgb(15 23 42 / 10%);
+}
+
+.bike-placeholder {
+    min-height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+    font-size: 65px;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: #ffedd5;
+    color: #c2410c;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.description {
+    min-height: 48px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.price {
+    margin-top: 12px;
+    color: #ea580c;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.seller {
+    margin: 6px 0 16px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.contact-btn {
+    width: 100%;
+    font-size: 13px;
+}
+
+.demo-notice {
+    margin-top: 25px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Sell Form */
+.sell-section {
+    max-width: none;
+    background-color: #fff7ed;
+}
+
+.sell-section .section-heading,
+.sell-form {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sell-form {
+    padding: 28px;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 20px rgb(15 23 42 / 5%);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.sell-form > .btn {
+    width: 100%;
+}
+
+/* CMS Table */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+th,
+td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+th {
+    font-size: 13px;
+}
+
+td {
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background-color: #fff7ed;
+}
+
+.delete-btn {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    font-weight: 700;
+}
+
+.delete-btn:hover {
+    background-color: #fecaca;
+}
+
+/* Footer */
+footer {
+    padding: 35px 24px;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    text-align: center;
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 13px;
+}
+
+.copyright {
+    margin-top: 15px;
+    color: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+    .motorcycle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero {
+        min-height: 380px;
+        padding: 65px 20px;
+    }
+
+    .section {
+        padding: 50px 16px;
+    }
+
+    .motorcycle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container {
+        flex-wrap: wrap;
+    }
+
+    .search-container input {
+        flex-basis: 100%;
+    }
+
+    .search-container .btn {
+        flex: 1;
+    }
+
+    .sell-form {
+        padding: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}
