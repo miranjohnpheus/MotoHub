@@ -47,8 +47,14 @@
             placeholder="Search motorcycle name or brand..."
             aria-label="Search motorcycles"
         >
-        <button class="btn" type="button" onclick="searchMotorcycles()">Search</button>
-        <button class="btn btn-light" type="button" onclick="clearSearch()">Clear</button>
+
+        <button class="btn" type="button" onclick="searchMotorcycles()">
+            Search
+        </button>
+
+        <button class="btn btn-light" type="button" onclick="clearSearch()">
+            Clear
+        </button>
     </div>
 
     <p id="searchMessage" class="message" aria-live="polite"></p>
@@ -113,7 +119,9 @@
             >
         </div>
 
-        <button type="submit" class="btn">Add Motorcycle Listing</button>
+        <button type="submit" class="btn">
+            Add Motorcycle Listing
+        </button>
 
         <p id="formMessage" class="message" aria-live="polite"></p>
     </form>
@@ -138,6 +146,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
+
             <tbody id="listingTable"></tbody>
         </table>
     </div>
@@ -191,11 +200,12 @@
         }
     ];
 
+    // Format motorcycle price.
     function formatPrice(price) {
         return "₱" + Number(price).toLocaleString("en-PH");
     }
 
-    // Update the motorcycle catalog count.
+    // Update motorcycle catalog count.
     function updateCatalogCount() {
         const total = listings.length;
 
@@ -204,12 +214,14 @@
             : total + " motorcycles available";
     }
 
-    // Display motorcycle cards and the management table.
+    // Display motorcycle cards and management table.
     function renderListings() {
         motorcycleGrid.innerHTML = "";
         listingTable.innerHTML = "";
 
         listings.forEach(function(bike) {
+
+            // Create motorcycle card.
             const card = document.createElement("article");
             card.className = "motorcycle-card";
             card.dataset.name = bike.name;
@@ -292,7 +304,9 @@
         });
 
         updateCatalogCount();
-        listingCount.textContent = "Total Listings: " + listings.length;
+
+        listingCount.textContent =
+            "Total Listings: " + listings.length;
 
         searchMotorcycles();
     }
